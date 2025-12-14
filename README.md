@@ -20,6 +20,9 @@ GitHub GraphQL API を使用してレビュー待ちの Pull Request を取得�
 
 ## 環境変数
 
+<details>
+<summary>環境変数一覧を表示</summary>
+
 | 変数名               | 必須 | 説明                                            | 例                            |
 | -------------------- | ---- | ----------------------------------------------- | ----------------------------- |
 | `GITHUB_TOKEN`       | ✅   | GitHub Personal Access Token                    | `ghp_xxxx`                    |
@@ -30,6 +33,8 @@ GitHub GraphQL API を使用してレビュー待ちの Pull Request を取得�
 | `IGNORE_AFTER_DAYS`  |      | 指定日数より前に更新された PR を除外            | `30`                          |
 | `SLACK_MENTION_TYPE` |      | メンション種別（user/group/here/channel）       | `user`                        |
 | `SLACK_MENTION_ID`   |      | メンション対象の ID（user/group の場合は必須）  | `U01234567`                   |
+
+</details>
 
 ## 実行方法
 
@@ -72,6 +77,9 @@ macOS で launchd を使って定期的に通知を実行する設定例です�
 ### 1. plist ファイルの作成
 
 `~/Library/LaunchAgents/com.github.mittsu0.pr-notifier.plist` を作成します（この例では平日 15:00 に通知）：
+
+<details>
+<summary>plist ファイルの内容を表示</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -141,6 +149,8 @@ macOS で launchd を使って定期的に通知を実行する設定例です�
 </dict>
 </plist>
 ```
+
+</details>
 
 > **Note**: `/path/to/pr-notifier` は実際のプロジェクトパスに置き換えてください。
 
