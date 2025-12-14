@@ -41,7 +41,7 @@ export class RunCommand {
     const result = await this.useCase.execute(this.input);
 
     if (result.notified) {
-      console.log('📨 Notification sent successfully');
+      console.log(`📨 Notified ${result.pullRequests.length} pull requests`);
     }
 
     console.log('✅ PR Notifier completed');

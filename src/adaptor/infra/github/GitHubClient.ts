@@ -114,10 +114,6 @@ export class GitHubClient implements PullRequestRepository {
 
       const pullRequests = toPullRequests(response.search.nodes);
 
-      console.log(
-        `📋 Found ${response.search.issueCount} PRs, fetched ${pullRequests.length}`
-      );
-
       return pullRequests;
     } catch (error) {
       if (error instanceof Error) {
