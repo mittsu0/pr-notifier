@@ -8,6 +8,29 @@ GitHub GraphQL API を使用してレビュー待ちの Pull Request を取得�
 - Slack Incoming Webhook で通知
 - メンション機能（ユーザー、グループ、here、channel）
 
+## 取得条件
+
+以下の条件に合致する Pull Request を取得します：
+
+- 指定した Organization/Owner 配下のリポジトリ
+- 自分にレビューがリクエストされている（`review-requested:@me`）
+- Open 状態
+- Draft 以外（設定で変更可能）
+- 指定日数以内に更新されたもの（設定で変更可能）
+
+## 環境変数
+
+| 変数名               | 必須 | 説明                                            | 例                            |
+| -------------------- | ---- | ----------------------------------------------- | ----------------------------- |
+| `GITHUB_TOKEN`       | ✅   | GitHub Personal Access Token                    | `ghp_xxxx`                    |
+| `OWNER`              | ✅   | 検索対象の Organization または Owner            | `my-org`                      |
+| `SLACK_WEBHOOK_URL`  | ✅   | Slack Incoming Webhook URL                      | `https://hooks.slack.com/...` |
+| `COUNT`              |      | 取得する PR の最大件数（1-100、デフォルト: 10） | `20`                          |
+| `INCLUDE_DRAFT`      |      | Draft PR を含めるか（デフォルト: false）        | `true`                        |
+| `IGNORE_AFTER_DAYS`  |      | 指定日数より前に更新された PR を除外            | `30`                          |
+| `SLACK_MENTION_TYPE` |      | メンション種別（user/group/here/channel）       | `user`                        |
+| `SLACK_MENTION_ID`   |      | メンション対象の ID（user/group の場合は必須）  | `U01234567`                   |
+
 ## 実行方法
 
 ### Docker Compose
