@@ -157,8 +157,8 @@ macOS で launchd を使って定期的に通知を実行する設定例です�
 ### 2. launchd への登録
 
 ```bash
-# plistをロード（登録）
-launchctl load ~/Library/LaunchAgents/com.github.mittsu0.pr-notifier.plist
+# plistをロード（登録、-w で永続化）
+launchctl load -w ~/Library/LaunchAgents/com.github.mittsu0.pr-notifier.plist
 
 # 動作確認（手動実行）
 launchctl start com.github.mittsu0.pr-notifier
@@ -170,8 +170,8 @@ tail -f /tmp/pr-notifier.log
 ### 3. その他のコマンド
 
 ```bash
-# 登録解除
-launchctl unload ~/Library/LaunchAgents/com.github.mittsu0.pr-notifier.plist
+# 登録解除（-w で永続的に無効化）
+launchctl unload -w ~/Library/LaunchAgents/com.github.mittsu0.pr-notifier.plist
 
 # 状態確認
 launchctl list | grep pr-notifier
